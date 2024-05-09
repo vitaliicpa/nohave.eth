@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOHAVE.ETH</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #fff;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+    .container {
+        animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    .wallet-address, .modal-content {
+        background-color: #1e1e2f;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    button {
+        background-color: #4e0eff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #3e0eff;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        margin: 15% auto;
+        padding: 20px;
+        width: 80%;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>NOHAVE.ETH</h1>
+    <div class="wallet-address" id="walletAddress">0x47dadCD1A69287294C66e85275A2A8Beb4ca2A36</div>
+    <button onclick="showModal()">Copy Address</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            Address copied to clipboard!
+        </div>
+    </div>
+</div>
+<script>
+    function showModal() {
+        const modal = document.getElementById('myModal');
+        const walletAddress = document.getElementById('walletAddress').innerText;
+        const el = document.createElement('textarea');
+        el.value = walletAddress;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        modal.style.display = "block";
+        setTimeout(() => { modal.style.display = "none"; }, 2000);
+    }
+</script>
+</body>
+</html>
